@@ -1,12 +1,10 @@
-# 1733 ms
-
-import copy
+# 146 ms
 
 start_state = list(map(int, open('input.txt', 'r').readline().split(',')))
 
 
 def try_codes(noun, verb):
-    opcodes = copy.deepcopy(start_state)
+    opcodes = start_state[:]
     opcodes[1] = noun
     opcodes[2] = verb
 
