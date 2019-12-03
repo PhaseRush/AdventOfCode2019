@@ -15,7 +15,7 @@ def get_points(commands):
         op = cmd[0]
         num = int(cmd[1:])
 
-        for i in range(num):
+        for _ in range(num):
             x = fx[op](x)
             y = fy[op](y)
             path_len += 1
