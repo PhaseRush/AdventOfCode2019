@@ -1,3 +1,5 @@
+# 0 ms
+
 accumulator = 0
 cache = dict([(-2, 0), (-1, 0), (0, 0), (1, 0), (2, 0), (3, 0), (4, 0), (5, 0), (6, 0), (7, 0), (8, 0)])
 
@@ -13,7 +15,7 @@ def determine_cost(mass):
     return final_mass
 
 
-with open('day1/input1.txt', 'r') as file:
+with open('day1/input.txt', 'r') as file:
     for line in file:
         accumulator += determine_cost(int(line))
 

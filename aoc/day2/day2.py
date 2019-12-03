@@ -1,3 +1,5 @@
+# 1733 ms
+
 import copy
 
 start_state = list(map(int, open('input.txt', 'r').readline().split(',')))
