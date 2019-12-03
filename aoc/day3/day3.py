@@ -1,9 +1,8 @@
-# 123 ms
-
+# 204ms
 (A, B) = map(lambda x: x.split(','), open('input.txt', 'r').read().split('\n'))
 
-opX = {'U': 0, 'D': 0, 'R': +1, 'L': -1}
-opY = {'U': +1, 'D': -1, 'R': 0, 'L': 0}
+fx = {'U': lambda i: i, 'D': lambda i: i, 'R': lambda i: i + 1, 'L': lambda i: i - 1}
+fy = {'U': lambda i: i + 1, 'D': lambda i: i - 1, 'R': lambda i: i, 'L': lambda i: i}
 
 
 def get_points(commands):
@@ -17,8 +16,8 @@ def get_points(commands):
         num = int(cmd[1:])
 
         for i in range(num):
-            x += opX[op]
-            y += opY[op]
+            x = fx[op](x)
+            y = fy[op](y)
             path_len += 1
             if (x, y) not in points:
                 points[(x, y)] = path_len
