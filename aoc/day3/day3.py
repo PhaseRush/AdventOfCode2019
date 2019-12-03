@@ -10,7 +10,7 @@ def get_points(commands):
     points = {}
     x = 0
     y = 0
-    len = 0
+    path_len = 0
 
     for cmd in commands:
         op = cmd[0]
@@ -19,20 +19,13 @@ def get_points(commands):
         for i in range(num):
             x += opX[op]
             y += opY[op]
-            len += 1
+            path_len += 1
             if (x, y) not in points:
-                points[(x, y)] = len
+                points[(x, y)] = path_len
     return points
 
 
 p_a = get_points(A)
 p_b = get_points(B)
-# intersection = {k: p_a[k] + p_b[k]}) for k in p_a.keys() & p_b.keys()
-
-interSet = (p_a.keys() & p_b.keys())
-interPoints = dict()
-
-for key in interSet:
-    interPoints[key] = p_a[key] + p_b[key]
-
-print(interPoints[min(interPoints, key=interPoints.get)])
+inter_points = {k: p_a[k] + p_b[k] for k in p_a.keys() & p_b.keys()}
+print(inter_points[min(inter_points, key=inter_points.get)])
