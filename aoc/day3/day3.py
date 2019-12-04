@@ -1,4 +1,5 @@
 # 204ms
+
 (A, B) = map(lambda x: x.split(','), open('input.txt', 'r').read().split('\n'))
 
 fx = {'U': lambda i: i, 'D': lambda i: i, 'R': lambda i: i + 1, 'L': lambda i: i - 1}
