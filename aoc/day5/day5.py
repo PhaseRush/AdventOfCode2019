@@ -2,8 +2,6 @@
 
 start_state = list(map(int, open('input.txt', 'r').readline().split(',')))
 
-op_len = {1: 4, 2: 4, 3: 2, 4: 2}
-
 
 def try_codes(noun, verb):
     codes = start_state[:]
@@ -56,7 +54,6 @@ def try_codes(noun, verb):
                 codes[third] = 1
             else:
                 codes[third] = 0
-
         idx += increment
 
     return codes[0]
