@@ -70,11 +70,8 @@ def run_tape(inputs, idx=0):
     return None, idx
 
 
-list_amps = [5, 6, 7, 8, 9]
-max_out = -10000000000
-
-for permutation in list(nya.permutations(list_amps)):
-    new_val = 0
+def best_boost(permutation):
+    max_out = -10000000000
     indexes = [0, 0, 0, 0, 0]  # starting indexes 0 for all amps
     outputs = [0, 0, 0, 0, 0]  # outputs 0 for all amps
     inputs = [[permutation[i]] for i in range(5)]  # init inputs are the phase themselves
@@ -83,14 +80,12 @@ for permutation in list(nya.permutations(list_amps)):
     is_done = False
     while not is_done:
         for j in range(5):
-            # print(type(inputs[j]), type(indexes[j]))
             new_val, new_idx = run_tape(inputs[j], indexes[j])  # run it at the proper settings
             if new_val is None:
-                max_out = max(max_out, outputs[-1])
-                is_done = True
-                break
+                return max(max_out, outputs[-1])
             indexes[j] = new_idx  # update idx
             outputs[j] = new_val  # update output
             inputs[(j + 1) % 5].append(new_val)  # (j+1) %5 because input to next amp
 
-print(max_out)
+
+print(max(best_boost(permutation) for permutation in list(nya.permutations([5, 6, 7, 8, 9]))))
