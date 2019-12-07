@@ -4,17 +4,6 @@ import itertools as nya
 start_state = list(map(int, open('input.txt', 'r').readline().split(',')))
 
 
-def get_args(P, ip, n, digits, output):
-    while len(digits) < n:
-        digits = [0] + digits
-    ans = P[ip + 1:ip + n + 1]
-    if output:
-        assert digits[0] == 0
-        digits[0] = 1
-    ans = [x if digits[len(digits) - 1 - i] == 1 else P[x] for i, x in enumerate(ans)]
-    return ans
-
-
 def run_tape(inputs, idx=0):
     codes = start_state[:]
 
