@@ -40,3 +40,10 @@ for y in range(tall):  # 6
         curr_pix = gen_pixel(x, y)
         print(curr_pix if curr_pix == '1' else ' ', end='')
     print()
+
+#  11    11 1111 1  1 111
+# 1  1    1    1 1  1 1  1
+# 1       1   1  1111 1  1
+# 1       1  1   1  1 111
+# 1  1 1  1 1    1  1 1 1
+#  11   11  1111 1  1 1  1
