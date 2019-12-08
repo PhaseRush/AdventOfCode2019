@@ -38,7 +38,7 @@ def gen_pixel(x, y):
 for y in range(tall):  # 6
     for x in range(wide):  # 25
         curr_pix = gen_pixel(x, y)
-        print(curr_pix if curr_pix == '1' else ' ', end='')
+        print('·' if curr_pix == '1' else ' ', end='')
     print()
 
 #  11    11 1111 1  1 111
