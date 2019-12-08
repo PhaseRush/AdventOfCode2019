@@ -4,8 +4,8 @@ import itertools as nya
 start_state = list(map(int, open('input.txt', 'r').readline().split(',')))
 
 
-def run_tape(inputs, idx=0):
-    codes = start_state[:]
+def run_tape(inputs, idx, state):
+    codes = state
 
     while idx < len(codes) and codes[idx] != 99:
         digits = [int(x) for x in str(codes[idx])]
@@ -26,7 +26,7 @@ def run_tape(inputs, idx=0):
             codes[codes[idx + 1]] = inputs.pop(0)
             increment = 2
         elif opcode is 4:
-            return (codes[codes[idx + 1]]), idx + 2
+            return (codes[codes[idx + 1]]), idx + 2, codes
             # increment = 2
         elif opcode is 5:
             first, second = codes[idx + 1], codes[idx + 2]
@@ -56,7 +56,7 @@ def run_tape(inputs, idx=0):
                 codes[third] = 0
         idx += increment
 
-    return None, idx
+    return None, idx, None
 
 
 def best_boost(permutation):
@@ -65,13 +65,15 @@ def best_boost(permutation):
     outputs = [0, 0, 0, 0, 0]  # outputs 0 for all amps
     inputs = [[permutation[i]] for i in range(5)]  # init inputs are the phase themselves
     inputs[0].append(0)  # first amp starts with phase number, then 0
+    states = [list(start_state) for _ in range(5)] # persist state, NOT NEEDED FOR THE BIG INPUT, CONFIRMED WITH MANY PPL, BUT NEED FOR EXAMPLE
 
     is_done = False
     while not is_done:
         for j in range(5):
-            new_val, new_idx = run_tape(inputs[j], indexes[j])  # run it at the proper settings
+            new_val, new_idx, new_state = run_tape(inputs[j], indexes[j], states[j])  # run it at the proper settings
             if new_val is None:
                 return max(max_out, outputs[-1])
+            states[j] = new_state
             indexes[j] = new_idx  # update idx
             outputs[j] = new_val  # update output
             inputs[(j + 1) % 5].append(new_val)  # (j+1) %5 because input to next amp
