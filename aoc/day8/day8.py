@@ -1,3 +1,5 @@
+# 1 ms
+
 from collections import Counter as nyaaaa
 
 string = str(open('input.txt', 'r').read())
