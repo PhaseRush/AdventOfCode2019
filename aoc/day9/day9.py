@@ -5,6 +5,8 @@ codes.extend([0] * 20000)
 idx = 0
 idx_offset = 0
 
+num_ops = 0
+
 
 def get_idx(i, modes):
     mode = (0 if i >= len(modes) else modes[i])
@@ -26,7 +28,8 @@ def get_val(i, modes):
 
 
 def run_tape():
-    global idx_offset, idx
+    global idx_offset, idx, num_ops
+    num_ops = 0
 
     while True:
         command = str(codes[idx])
@@ -69,6 +72,7 @@ def run_tape():
             return None
 
         idx += increment
+        num_ops += 1
 
 
 while True:
@@ -76,3 +80,4 @@ while True:
     if val is None:
         break
     print(val)
+    print(num_ops)
