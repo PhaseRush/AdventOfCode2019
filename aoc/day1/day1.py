@@ -1,6 +1,5 @@
 # 0 ms for puzzle input
-# 32476 ms for manual (dict) cache with benchmark_input.txt Ans:2499077756351525, hits:10000000, misses:42335033
-# 32476 ms for manual (dict) cache with benchmark_input.txt
+# 9306 ms for manual (dict) cache with benchmark_input.txt Ans:24999112324301, hits:10000000, misses:7506245
 
 accumulator = 0
 cache = dict([(-2, 0), (-1, 0), (0, 0), (1, 0), (2, 0), (3, 0), (4, 0), (5, 0), (6, 0), (7, 0), (8, 0)])
@@ -37,8 +36,8 @@ def determine_cost(mass):
 
 ans = sum([determine_cost(int(line)) for line in open('day1/benchmark_input.txt', 'r')])
 print(f'Ans:{ans}, hits:{hits}, misses:{misses}')
-#
+
 # import random
 #
 # with open('day1/benchmark_input.txt', 'w') as file:
-#     file.write('\n'.join(map(str, [random.randrange(1, 10000) for _ in range(10000000)])))
+#     file.write('\n'.join(map(str, [random.randrange(1, 100000000) for _ in range(10000000)])))
