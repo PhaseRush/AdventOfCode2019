@@ -2,15 +2,15 @@ from aoc.Intcode import Program
 
 R = 30
 C = 1000
-map = [[0 for _ in range(C)] for _ in range(R)]
-map[R // 2][C // 2] = 1
+picture = [[0 for _ in range(C)] for _ in range(R)]
+picture[R // 2][C // 2] = 1
 curr_dir = 0
 DIR = [(-1, 0), (0, 1), (1, 0), (0, -1)]
 pos = (R // 2, C // 2)
 
 
 def get_color():
-    return map[pos[0]][pos[1]]
+    return picture[pos[0]][pos[1]]
 
 
 painted = set()
@@ -22,7 +22,7 @@ while True:
         break
 
     painted.add(pos)
-    map[pos[0]][pos[1]] = colour
+    picture[pos[0]][pos[1]] = colour
     if turn == 0:
         curr_dir = (curr_dir + 3) % 4
     else:
@@ -32,5 +32,5 @@ while True:
 print(f'painted={len(painted)}')
 for r in range(R):
     for c in range(C):
-        print('X' if map[r][c] == 1 else ' ', end='')
+        print('X' if picture[r][c] == 1 else ' ', end='')
     print()
