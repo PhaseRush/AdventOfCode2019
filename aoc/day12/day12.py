@@ -1,3 +1,4 @@
+# 4128 with optimization, 5213 ms without
 import math
 
 num_moons = 4
@@ -57,8 +58,6 @@ z_period = None
 
 # for _ in range(total_steps):
 for t in range(100000000000000):
-    if t % 1e6 == 0:
-        print(t)
     if x_period and y_period and z_period:
         break
     calc_vel()
@@ -102,4 +101,4 @@ def lcm(x, y):
     return abs(x * y) // math.gcd(x, y)
 
 
-print(lcm(lcm(x_period, y_period), z_period))
+print(f'Overall period = {lcm(lcm(x_period, y_period), z_period)}')
