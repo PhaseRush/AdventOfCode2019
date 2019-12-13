@@ -10,6 +10,7 @@ class Program(object):
         self.ip = 0
         self.pid = pid
         self.rel_base = 0
+        self.halted = False
 
     def idx(self, i, I):
         mode = (0 if i >= len(I) else I[i])
@@ -77,4 +78,5 @@ class Program(object):
                 self.ip += 2
             else:
                 assert opcode == 99, opcode
+                self.halted = True
                 return None
