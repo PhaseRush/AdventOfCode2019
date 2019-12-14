@@ -1,6 +1,8 @@
 # 4128 with optimization, 5213 ms without
 import math
 
+# from pybloom import BloomFilter
+
 num_moons = 4
 # pos = [[-1, 0, 2], [2, -10, -7], [4, -8, 8], [3, 5, -1]]
 # pos = [[14, 9, 14], [9, 11, 6], [-6, 14, -4], [4, -4, -3]]
@@ -55,6 +57,8 @@ y_history = set()
 y_period = None
 z_history = set()
 z_period = None
+
+# bloom_filter = BloomFilter(error_rate=0.0000000001, max_number_of_element_expected=int(10e15))
 
 # for _ in range(total_steps):
 for t in range(100000000000000):
