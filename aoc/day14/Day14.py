@@ -26,9 +26,9 @@ def calc(required_amount):
 
     while any(required[k] > 0 and not k == 'ORE' for k in required):
         needs = [reactant for reactant in required if required[reactant] > 0 and reactant != "ORE"][0]
-        out_quants = recipes[needs][1][0]
-        multiple = math.ceil(required[needs] / out_quants)
-        required[needs] -= out_quants * multiple
+        product_quantities = recipes[needs][1][0]
+        multiple = math.ceil(required[needs] / product_quantities)
+        required[needs] -= product_quantities * multiple
         for reactant in recipes[needs][0]:
             if reactant[1] in required:
                 required[reactant[1]] += reactant[0] * multiple
