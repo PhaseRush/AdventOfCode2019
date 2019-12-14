@@ -1,5 +1,5 @@
+# 54ms
 import math
-from collections import defaultdict
 
 
 def slurp(f_in_chat):
