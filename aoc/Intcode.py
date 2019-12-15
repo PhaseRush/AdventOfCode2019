@@ -40,7 +40,7 @@ class Program(object):
                 return ans
             ans.append(val)
 
-    def run(self):
+    def run(self, optional_input=None):
         """Return next output"""
         while True:
             cmd = str(self.P[self.ip])
@@ -55,7 +55,7 @@ class Program(object):
                 self.P[self.idx(2, I)] = self.val(0, I) * self.val(1, I)
                 self.ip += 4
             elif opcode == 3:
-                inp = self.input()
+                inp = self.input() if optional_input is None else optional_input
                 self.P[self.idx(0, I)] = inp  # self.Q[0]
                 # self.Q.pop(0)
                 self.ip += 2
