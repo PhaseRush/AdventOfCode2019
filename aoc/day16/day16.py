@@ -40,27 +40,27 @@ offset = int("".join(map(str, input_list[:7])))
 assert offset > len(input_list) * 10000 / 2  # or else 1 block assumption broken
 input_2 = input_list * 10000
 offset = int(''.join([str(input_2[i]) for i in range(7)]))
+shorter = input_2[offset:]  # everything before 0 anyways
 
 
-def phase_2(D):
-    A = [0 for _ in range(len(D))]
-    ans = 0
-    for i in range(1, len(D) // 2):
-        ans += D[-i]
-        A[-i] = ans
-    A = [abs(x) % 10 for x in A]
-    return A
+def phase2(op_list):
+    suffix_sum = sum(op_list)
+    to_out = []
+    for i in range(len(op_list)):
+        to_out.append(abs(suffix_sum) % 10)
+        suffix_sum -= op_list[i]
+    return to_out
 
 
 for phase in range(100):
     print(phase)
-    input_2 = phase_2(input_2)
+    shorter = phase2(shorter)
 
-print(input_2[offset + 0], end='')
-print(input_2[offset + 1], end='')
-print(input_2[offset + 2], end='')
-print(input_2[offset + 3], end='')
-print(input_2[offset + 4], end='')
-print(input_2[offset + 5], end='')
-print(input_2[offset + 6], end='')
-print(input_2[offset + 7], end='')
+print(shorter[0], end='')
+print(shorter[1], end='')
+print(shorter[2], end='')
+print(shorter[3], end='')
+print(shorter[4], end='')
+print(shorter[5], end='')
+print(shorter[6], end='')
+print(shorter[7], end='')
