@@ -1,3 +1,5 @@
+# 30474 ms
+
 input_list = [int(x) for x in str(open('input.txt').read().strip())]
 base_pattern = [0, 1, 0, -1]
 
@@ -34,7 +36,7 @@ def fft(num_passes):
     return operating_list
 
 
-# print(f'part 1 = {fft(100)}')
+print(f'part 1 = {fft(100)}')
 
 offset = int("".join(map(str, input_list[:7])))
 assert offset > len(input_list) * 10000 / 2  # or else 1 block assumption broken
@@ -53,14 +55,6 @@ def phase2(op_list):
 
 
 for phase in range(100):
-    print(phase)
     shorter = phase2(shorter)
 
-print(shorter[0], end='')
-print(shorter[1], end='')
-print(shorter[2], end='')
-print(shorter[3], end='')
-print(shorter[4], end='')
-print(shorter[5], end='')
-print(shorter[6], end='')
-print(shorter[7], end='')
+print('part 2 = ' + ''.join([str(input_2[i]) for i in range(8)]))
