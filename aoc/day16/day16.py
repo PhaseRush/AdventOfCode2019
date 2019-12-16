@@ -57,4 +57,4 @@ def phase2(op_list):
 for phase in range(100):
     shorter = phase2(shorter)
 
-print('part 2 = ' + ''.join([str(input_2[i]) for i in range(8)]))
+print(f"part 2 = {''.join([str(input_2[i]) for i in range(8)])}")
